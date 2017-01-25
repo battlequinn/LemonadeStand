@@ -13,7 +13,7 @@ namespace LemonadeStand
         }
         public void Title()
         {
-            Console.WriteLine("Welcome to...\n\n(Press any key to continue.)");
+            Console.WriteLine("Welcome to...\n\n(Press any key to continue)");
             Console.ReadKey();
             Console.Clear();
             Console.WriteLine("                          *  *        ");
@@ -30,6 +30,17 @@ namespace LemonadeStand
             Console.WriteLine("  **************************            ");
             Console.WriteLine("   *********************                ");
             Console.WriteLine("      *************                   ");
+
+            Console.WriteLine("=====================================================================================================");
+            Console.WriteLine("\n-RULES-");
+            Console.WriteLine("__________");
+            Console.WriteLine("\nYou will have one week, a total of 7 days, to make as much money as you can by selling lemonade.");
+            Console.WriteLine("\nAt the beginning of each day, the news will be displayed.");
+            Console.WriteLine("     -It is in your best interest to pay attention to this so you can maximize your sales.");
+            Console.WriteLine("\nYou will then have the chance to buy supplies at the store, make lemonade, and sell lemonade.");
+            Console.WriteLine("     -In order to sell lemonade, you will need to make lemonade with bought supplies.");
+            Console.WriteLine("\nYou have $20 to your name. Good luck!");
+            Console.WriteLine("=====================================================================================================");
             Console.ReadKey();
         }
         public void DisplayInventory(double money, int lemons, int sugar, int ice, int cups, int pitchers)

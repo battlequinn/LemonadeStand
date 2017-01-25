@@ -12,7 +12,6 @@ namespace LemonadeStand
         public Player player = new Player();
         public Game()
         {
-
         }
         
         public void RunGame()
