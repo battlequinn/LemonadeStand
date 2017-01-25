@@ -11,7 +11,7 @@ namespace LemonadeStand
         public Inventory inventory;
         public Player()
         {
-            inventory = new Inventory(inventory.money);
+            inventory = new Inventory(inventory.Money);
         }
         public void BuyIngredients()
         {

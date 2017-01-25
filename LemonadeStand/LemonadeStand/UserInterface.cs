@@ -26,6 +26,11 @@ namespace LemonadeStand
             Console.WriteLine("      *****************************      ");
             Console.WriteLine("       ***************************       ");
             Console.WriteLine("           *******************           ");
+            Console.ReadKey();
+        }
+        public void DisplayInventory()
+        {
+
         }
     }
 }

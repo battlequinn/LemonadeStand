@@ -8,13 +8,14 @@ namespace LemonadeStand
 {
     public class Inventory
     {
-        public double money;
-        public List<Ingredients> ingredients;
+        private double money = 20;
+        private List<Supplies> supplies;
+
+        public double Money { get { return money; } set { money = value; } }
         public Inventory(double money)
         {
             this.money = money;
-            ingredients = new List<Ingredients>();
+            supplies = new List<Supplies>(new Supplies[] { lemons, sugar, ice, cups, pitchers });
         }
-
     }
 }
