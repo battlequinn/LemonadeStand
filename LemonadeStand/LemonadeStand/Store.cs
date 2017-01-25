@@ -10,11 +10,9 @@ namespace LemonadeStand
     {
         public Store()
         {
-            
         }
         public void SetIngredientPrice()
         {
-
         }
     }
 }
