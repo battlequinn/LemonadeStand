@@ -16,6 +16,7 @@ namespace LemonadeStand
             Console.WriteLine("Welcome to...\n\n(Press any key to continue)");
             Console.ReadKey();
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("                          *  *        ");
             Console.WriteLine("                       *       *          ");
             Console.WriteLine("                     *            *   **      ");
@@ -30,6 +31,7 @@ namespace LemonadeStand
             Console.WriteLine("  **************************            ");
             Console.WriteLine("   *********************                ");
             Console.WriteLine("      *************                   ");
+            Console.ResetColor();
 
             Console.WriteLine("=====================================================================================================");
             Console.WriteLine("\n-RULES-");
@@ -55,10 +57,6 @@ namespace LemonadeStand
             Console.WriteLine($"Cups: {cups}");
             Console.WriteLine($"Pitchers: {pitchers}");
             Console.WriteLine("=============");
-        }
-        public void DisplayDay(int currentDay)
-        {
-            Console.WriteLine($"Day {currentDay}");
         }
     }
 }

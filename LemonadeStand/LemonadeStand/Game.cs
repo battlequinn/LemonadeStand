@@ -9,8 +9,8 @@ namespace LemonadeStand
     public class Game
     {
         UserInterface ui = new UserInterface();
-        public Player player = new Player();
-        public Day day = new Day();
+        Player player = new Player();
+        News news = new News();
         public Game()
         {
         }
@@ -22,8 +22,8 @@ namespace LemonadeStand
         public void RunDay()
         {
             Console.Clear();
-            GetDay();
-            //GetNews();
+            news.DisplayNews();
+            Console.Clear();
             SetInitialSupplies();
             GetInventory();
 
@@ -46,18 +46,6 @@ namespace LemonadeStand
             int pitchers = player.inventory.supplies[4].Quantity;
             ui.DisplayInventory(money, lemons, sugar, ice, cups, pitchers);
         }
-        private void GetDay()
-        {
-            int currentDay = day.Number;
-            ui.DisplayDay(currentDay);
-        }
-        /*private void GetNews()
-        {
-            string overcast = weather.Overcast();
-            int temp = weather.Temperature();
-            string taste = taste.Taste();
-            string randomEffect = randomEffect.RandomEffect();
-            DisplayNews();
-        }*/
+        
     }
 }
