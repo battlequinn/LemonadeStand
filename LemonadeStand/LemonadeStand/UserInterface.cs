@@ -37,7 +37,7 @@ namespace LemonadeStand
             Console.WriteLine("\nYou will have one week, a total of 7 days, to make as much money as you can by selling lemonade.");
             Console.WriteLine("\nAt the beginning of each day, the news will be displayed.");
             Console.WriteLine("     -It is in your best interest to pay attention to this so you can maximize your sales.");
-            Console.WriteLine("\nYou will then have the chance to buy supplies at the store, make lemonade, and sell lemonade.");
+            Console.WriteLine("\nYou will then have the chance to buy supplies at the store, change your recipe, make lemonade, and sell lemonade.");
             Console.WriteLine("     -In order to sell lemonade, you will need to make lemonade with bought supplies.");
             Console.WriteLine("\nYou have $20 to your name. Good luck!");
             Console.WriteLine("=====================================================================================================");
@@ -45,7 +45,6 @@ namespace LemonadeStand
         }
         public void DisplayInventory(double money, int lemons, int sugar, int ice, int cups, int pitchers)
         {
-            Console.Clear();
             Console.WriteLine("=============");
             Console.WriteLine("  Inventory  ");
             Console.WriteLine("_____________");
@@ -56,6 +55,10 @@ namespace LemonadeStand
             Console.WriteLine($"Cups: {cups}");
             Console.WriteLine($"Pitchers: {pitchers}");
             Console.WriteLine("=============");
+        }
+        public void DisplayDay(int currentDay)
+        {
+            Console.WriteLine($"Day {currentDay}");
         }
     }
 }

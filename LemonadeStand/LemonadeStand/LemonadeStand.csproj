@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Day.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="News.cs" />
     <Compile Include="Supplies.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="Player.cs" />
@@ -51,6 +53,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Store.cs" />
     <Compile Include="UserInterface.cs" />
+    <Compile Include="Weather.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
