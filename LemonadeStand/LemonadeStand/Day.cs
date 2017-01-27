@@ -41,8 +41,10 @@ namespace LemonadeStand
                 case 7:
                     Name = "Saturday";
                     break;
+                default:
+                    Name = "There was an error in processing your request";
+                    break;
             }
-
         }
     }
 }

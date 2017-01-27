@@ -12,7 +12,6 @@ namespace LemonadeStand
         Headline headline = new Headline();
         TasteOfTheDay tasteOfTheDay = new TasteOfTheDay();
         Day day = new Day();
-        
 
         private string currentDay;
         private string todaysHeadline;
@@ -30,7 +29,7 @@ namespace LemonadeStand
         public void DisplayNews()
         {
             Console.WriteLine("=====================================================================================================");
-            Console.WriteLine($"{currentDay}                                       The Daily Lemon");
+            Console.WriteLine($"{currentDay}                                The Daily Lemon");
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine(todaysHeadline);
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -43,7 +42,9 @@ namespace LemonadeStand
         private string GetDay()
         {
             int dayNumber = day.Number;
-            string currentDay = $"Day {dayNumber}";
+            day.GetDayName();
+            string dayName = day.Name;
+            string currentDay = $"Day {dayNumber}: {dayName}";
             return currentDay;
         }
         private string GetHeadline()

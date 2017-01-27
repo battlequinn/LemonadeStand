@@ -58,5 +58,30 @@ namespace LemonadeStand
             Console.WriteLine($"Pitchers: {pitchers}");
             Console.WriteLine("=============");
         }
+        public int DisplayHome()
+        {
+            Console.WriteLine("=====================================================================================================");
+            Console.WriteLine("Home");
+            Console.WriteLine("\nHere you can check your inventory, make a trip to the store, prepare your recipe, and make lemonade.");
+            Console.WriteLine("Once you're finished, select the 'Set Up Stand' option to sell your lemonade and finish the day.");
+            Console.WriteLine("If you wish you may select the retire button to quit.");
+            bool loop = false;
+            int answer;
+            do
+            {
+                Console.WriteLine("\n1)Check inventory 2)Go To Store 3)Change Recipe 4)Make Lemonade 5) Set Up Stand 6)Retire");
+                bool result = Int32.TryParse(Console.ReadLine(), out answer);
+                if (result && (answer == 1 || answer == 2 || answer == 3 || answer == 4 || answer == 5 || answer == 6))
+                {
+                    loop = false;
+                }
+                else
+                {
+                    Console.WriteLine("ERROR: Unable to read input. Please type the number corresponding to your selection of choice.");
+                    loop = true;
+                }
+            } while (loop == true);
+            return answer;
+        }
     }
 }

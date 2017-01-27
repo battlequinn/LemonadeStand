@@ -19,15 +19,16 @@ namespace LemonadeStand
             ui.Title();
             RunDay();
         }
-        public void RunDay()
+        private void RunDay()
         {
             Console.Clear();
             news.DisplayNews();
             Console.Clear();
             SetInitialSupplies();
             GetInventory();
-
+            RunMenu();
         }
+
         private void SetInitialSupplies()
         {
             player.inventory.supplies.Add(new Supplies("lemons", 0, 0));
@@ -45,6 +46,34 @@ namespace LemonadeStand
             int cups = player.inventory.supplies[3].Quantity;
             int pitchers = player.inventory.supplies[4].Quantity;
             ui.DisplayInventory(money, lemons, sugar, ice, cups, pitchers);
+        }
+        public void RunMenu()
+        {
+            int playerOption = ui.DisplayHome();
+            switch (playerOption)
+            {
+                case 1:
+                    GetInventory();
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+
+                    break;
+                case 5:
+
+                    break;
+                case 6:
+                    
+                    break;
+                default:
+                    Console.WriteLine("There was an error in processing your request.");
+                    break;
+            }
         }
         
     }
