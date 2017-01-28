@@ -8,17 +8,20 @@ namespace LemonadeStand
 {
     public class Day
     {
+        Weather weather = new Weather();
+        News news = new News();
         private string name;
-        private int number = 1;
+        public int number;
 
-        public int Number { get { return number; } set { number = value; } }
         public string Name { get { return name; } set { name = value; } }
-        public Day()
+        public Day(int number)
         {
+            this.number = number + 1;
+            this.name = GetDayName();
         }
-        public void GetDayName()
+        public string GetDayName()
         {
-            switch (Number)
+            switch (number)
             {
                 case 1:
                     Name = "Sunday";
@@ -45,6 +48,11 @@ namespace LemonadeStand
                     Name = "There was an error in processing your request";
                     break;
             }
+            return Name;
+        }
+        public void GetNews()
+        {
+            news.DisplayNews(number, Name);
         }
     }
 }

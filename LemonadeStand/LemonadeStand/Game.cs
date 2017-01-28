@@ -11,27 +11,33 @@ namespace LemonadeStand
         UserInterface ui = new UserInterface();
         Player player = new Player();
         News news = new News();
+        List<Day> day = new List<Day>();
         public Game()
         {
         }
         public void RunGame()
         {
             ui.Title();
-            RunDay();
+            for(int i = 0; i<7; i++)
+            {
+                day.Add(new Day(i));
+                RunDay(day[i]);
+            }
         }
-        private void RunDay()
+        private void RunDay(Day day)
         {
             Console.Clear();
-            news.DisplayNews();
+            
+            day.GetNews();
             Console.Clear();
             SetInitialSupplies();
             GetInventory();
-            RunMenu();
+            RunHome();
         }
 
         private void SetInitialSupplies()
         {
-            player.inventory.supplies.Add(new Supplies("lemons", 0, 0));
+            player.inventory.supplies.Add(new Supplies("lemons", 0.50, 0));
             player.inventory.supplies.Add(new Supplies("sugar", 0, 0));
             player.inventory.supplies.Add(new Supplies("ice", 0, 0));
             player.inventory.supplies.Add(new Supplies("cups", 0, 0));
@@ -47,7 +53,7 @@ namespace LemonadeStand
             int pitchers = player.inventory.supplies[4].Quantity;
             ui.DisplayInventory(money, lemons, sugar, ice, cups, pitchers);
         }
-        public void RunMenu()
+        public void RunHome()
         {
             int playerOption = ui.DisplayHome();
             switch (playerOption)
@@ -56,7 +62,7 @@ namespace LemonadeStand
                     GetInventory();
                     break;
                 case 2:
-
+                    
                     break;
                 case 3:
 

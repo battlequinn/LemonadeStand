@@ -13,8 +13,9 @@ namespace LemonadeStand
         {
             inventory = new Inventory();
         }
-        public void BuyIngredients()
+        public void BuyIngredients(int choice)
         {
+            
 
         }
     }

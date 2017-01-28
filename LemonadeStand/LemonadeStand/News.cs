@@ -11,9 +11,7 @@ namespace LemonadeStand
         Weather weather = new Weather();
         Headline headline = new Headline();
         TasteOfTheDay tasteOfTheDay = new TasteOfTheDay();
-        Day day = new Day();
 
-        private string currentDay;
         private string todaysHeadline;
         private string weatherReport;
         private string taste;
@@ -21,15 +19,14 @@ namespace LemonadeStand
 
         public News()
         {
-            currentDay = GetDay();
             todaysHeadline = GetHeadline();
             weatherReport = GetWeatherReport();
             taste = GetTasteOfTheDay();
         }
-        public void DisplayNews()
+        public void DisplayNews(int day, string dayName)
         {
             Console.WriteLine("=====================================================================================================");
-            Console.WriteLine($"{currentDay}                                The Daily Lemon");
+            Console.WriteLine($"{GetDay(day, dayName)}                                The Daily Lemon");
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine(todaysHeadline);
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -39,12 +36,9 @@ namespace LemonadeStand
             Console.WriteLine("=====================================================================================================");
             Console.ReadKey();
         }
-        private string GetDay()
+        public string GetDay(int day,string name)
         {
-            int dayNumber = day.Number;
-            day.GetDayName();
-            string dayName = day.Name;
-            string currentDay = $"Day {dayNumber}: {dayName}";
+            string currentDay = $"Day {day}: {name}";
             return currentDay;
         }
         private string GetHeadline()

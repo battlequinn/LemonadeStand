@@ -52,8 +52,8 @@ namespace LemonadeStand
             Console.WriteLine("_____________");
             Console.WriteLine($"\nMoney: ${money}");
             Console.WriteLine($"Lemons: {lemons}");
-            Console.WriteLine($"Sugar: {sugar}");
-            Console.WriteLine($"Ice: {ice}");
+            Console.WriteLine($"Sugar: {sugar} tbls");
+            Console.WriteLine($"Ice: {ice} cubes");
             Console.WriteLine($"Cups: {cups}");
             Console.WriteLine($"Pitchers: {pitchers}");
             Console.WriteLine("=============");
@@ -69,7 +69,30 @@ namespace LemonadeStand
             int answer;
             do
             {
-                Console.WriteLine("\n1)Check inventory 2)Go To Store 3)Change Recipe 4)Make Lemonade 5) Set Up Stand 6)Retire");
+                Console.WriteLine("\n1) Check inventory 2) Go To Store 3) Change Recipe 4) Make Lemonade 5) Set Up Stand 6) Retire");
+                bool result = Int32.TryParse(Console.ReadLine(), out answer);
+                if (result && (answer == 1 || answer == 2 || answer == 3 || answer == 4 || answer == 5 || answer == 6))
+                {
+                    loop = false;
+                }
+                else
+                {
+                    Console.WriteLine("ERROR: Unable to read input. Please type the number corresponding to your selection of choice.");
+                    loop = true;
+                }
+            } while (loop == true);
+            return answer;
+        }
+        public int DisplayStore()
+        {
+            Console.WriteLine("=====================================================================================================");
+            Console.WriteLine("Welcome to Lemon Heaven! \n\nWhat would you like to buy?");
+            Console.WriteLine("=====================================================================================================");
+            bool loop = false;
+            int answer;
+            do
+            {
+                Console.WriteLine("\n1) Lemons 2) Sugar 3) Ice 4) Cups 5) Pitchers 6) Leave");
                 bool result = Int32.TryParse(Console.ReadLine(), out answer);
                 if (result && (answer == 1 || answer == 2 || answer == 3 || answer == 4 || answer == 5 || answer == 6))
                 {
