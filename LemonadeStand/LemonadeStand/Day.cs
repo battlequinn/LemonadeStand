@@ -8,8 +8,8 @@ namespace LemonadeStand
 {
     public class Day
     {
-        Weather weather = new Weather();
-        News news = new News();
+        public Weather weather = new Weather();
+        public News news = new News();
         private string name;
         public int number;
 
@@ -17,9 +17,9 @@ namespace LemonadeStand
         public Day(int number)
         {
             this.number = number + 1;
-            this.name = GetDayName();
+            this.Name = SetDayName();
         }
-        public string GetDayName()
+        private string SetDayName()
         {
             switch (number)
             {
@@ -49,10 +49,6 @@ namespace LemonadeStand
                     break;
             }
             return Name;
-        }
-        public void GetNews()
-        {
-            news.DisplayNews(number, Name, weather);
         }
     }
 }

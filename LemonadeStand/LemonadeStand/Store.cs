@@ -29,7 +29,9 @@ namespace LemonadeStand
                         if (confirmation == 1)
                         {
                             player.BuyIngredients(choice, amount, expense);
-                        }else
+                            Console.WriteLine("Thank you for your shopping at The Dollar Lemon!");
+                        }
+                        else
                         {
                             Console.WriteLine("Okay, is there anything else you would like to buy?");
                         }
@@ -43,7 +45,7 @@ namespace LemonadeStand
                 Console.Clear();
             } while (choice != 5);
             Console.WriteLine("=====================================================================================================");
-            Console.WriteLine("Thank you for shopping at The Dolor Lemon. Come back soon!");
+            Console.WriteLine("Thank you for shopping at The Dollar Lemon. Come back soon!");
             Console.WriteLine("=====================================================================================================");
             Console.ReadKey();
             Console.Clear();
@@ -83,7 +85,7 @@ namespace LemonadeStand
             int amount;
             do
             {
-                Console.WriteLine("\nHow many would you like? \n(Whole numbers only)");
+                Console.WriteLine("\nHow many would you like? \n(Positive whole numbers only)");
                 bool result = Int32.TryParse(Console.ReadLine(), out amount);
                 if (result && amount >= 0 && amount <= 1000)
                 {
@@ -118,7 +120,6 @@ namespace LemonadeStand
         }
         private int GetConfirmation(double expense, double playerMoney)
         {
-            bool confirmation = false;
             int answer;
             bool result;
             Console.WriteLine($"\nTotal: ${expense}\nYour Money: ${playerMoney}\n");

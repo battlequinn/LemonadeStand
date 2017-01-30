@@ -18,7 +18,6 @@ namespace LemonadeStand
         {
             inventory.supplies[item].Quantity += amount;
             inventory.Money -= expense;
-            Console.WriteLine("Thank you for your shopping at The Dolor Lemon!");
         }
     }
 }

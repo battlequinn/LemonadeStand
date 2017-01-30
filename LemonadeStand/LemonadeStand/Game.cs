@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LemonadeStand
@@ -12,27 +13,35 @@ namespace LemonadeStand
         List<Day> day = new List<Day>();
         Player player = new Player();
         Store store = new Store();
-        News news = new News();
+        Random random = new Random();
         
         public Game()
         {
         }
         public void RunGame()
         {
+            GenerateWeek();
             ui.Title(player.inventory.Money);
             for(int i = 0; i<7; i++)
             {
-                day.Add(new Day(i));
                 RunDay(day[i]);
             }
         }
         private void RunDay(Day day)
         {
             Console.Clear();
-            day.GetNews();
+            day.news.GetNews(day, this.day, random);
             Console.Clear();
             SetInitialSupplies();
             RunHome(day);
+        }
+        private void GenerateWeek()
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                day.Add(new Day(i));
+
+            }
         }
         private void SetInitialSupplies()
         {
@@ -57,7 +66,7 @@ namespace LemonadeStand
                         Console.ReadKey();
                         break;
                     case 2:
-                        day.GetNews();
+                        day.news.GetNews(day, this.day, random);
                         break;
                     case 3:
                         store.RunStore(player);
