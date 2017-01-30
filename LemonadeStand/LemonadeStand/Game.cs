@@ -46,10 +46,11 @@ namespace LemonadeStand
         private void SetInitialSupplies()
         {
             player.inventory.supplies.Add(new Supplies("lemons", 0.50, 0));
-            player.inventory.supplies.Add(new Supplies("sugar", 0.10, 0));
-            player.inventory.supplies.Add(new Supplies("ice", 0.05, 0));
+            player.inventory.supplies.Add(new Supplies("sugar(tbsp)", 0.10, 0));
+            player.inventory.supplies.Add(new Supplies("ice(cubes)", 0.05, 0));
             player.inventory.supplies.Add(new Supplies("cups", 0.20, 0));
             player.inventory.supplies.Add(new Supplies("pitchers", 3.00, 0));
+            player.inventory.supplies.Add(new Supplies("pitchers of lemonade", 0, 0));
         }
         public void RunHome(Day day)
         {

@@ -11,17 +11,16 @@ namespace LemonadeStand
         public void RunStore(Player player)
         {
             Console.Clear();
-            Inventory inventory = player.inventory;
             int choice;
             do
             {
-                double playerMoney = inventory.Money;
-                inventory.DisplayInventory();
-                choice = DisplayStore(inventory);
+                double playerMoney = player.inventory.Money;
+                player.inventory.DisplayInventory();
+                choice = DisplayStore(player.inventory.supplies);
                 if (choice != 5)
                 {
                     int amount = SetAmount();
-                    double expense = GetExpense(choice, amount, inventory);
+                    double expense = GetExpense(choice, amount, player.inventory);
                     bool enoughMoney = DetermineEnoughMoney(expense, playerMoney);
                     if (enoughMoney == true)
                     {
@@ -50,20 +49,20 @@ namespace LemonadeStand
             Console.ReadKey();
             Console.Clear();
         }
-        private int DisplayStore(Inventory inventory)
+        private int DisplayStore(List<Supplies> supplies)
         {
             Console.WriteLine("=====================================================================================================");
-            Console.WriteLine("Welcome to The Dollar Lemon! \n\nWhat would you like to buy?");
+            Console.WriteLine("Welcome to The Dollar Lemon! \n\nWhat would you like to buy?\n");
             Console.WriteLine("=====================================================================================================");
             bool loop = false;
             int answer;
             do
             {
-                Console.WriteLine($"\n1) Lemons ${inventory.supplies[0].Price} each");
-                Console.WriteLine($"2) Sugar ${inventory.supplies[1].Price}/tbsp");
-                Console.WriteLine($"3) Ice ${inventory.supplies[2].Price}/cube");
-                Console.WriteLine($"4) Cups ${inventory.supplies[3].Price}/cup" );
-                Console.WriteLine($"5) Pitchers ${inventory.supplies[4].Price}/pitcher");
+                Console.WriteLine($"1) Lemons ${supplies[0].Price}");
+                Console.WriteLine($"2) Sugar ${supplies[1].Price}");
+                Console.WriteLine($"3) Ice ${supplies[2].Price}");
+                Console.WriteLine($"4) Cups ${supplies[3].Price}" );
+                Console.WriteLine($"5) Pitchers ${supplies[4].Price}");
                 Console.WriteLine("6) Leave");
                 bool result = Int32.TryParse(Console.ReadLine(), out answer);
                 if (result && (answer == 1 || answer == 2 || answer == 3 || answer == 4 || answer == 5 || answer == 6))
