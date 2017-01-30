@@ -52,7 +52,7 @@ namespace LemonadeStand
         }
         public void GetNews()
         {
-            news.DisplayNews(number, Name);
+            news.DisplayNews(number, Name, weather);
         }
     }
 }
