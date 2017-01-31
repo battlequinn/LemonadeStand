@@ -8,6 +8,7 @@ namespace LemonadeStand
 {
     public class Inventory
     {
+        Recipe recipe = new Recipe();
         private double money;
         public List<Supplies> supplies;
 

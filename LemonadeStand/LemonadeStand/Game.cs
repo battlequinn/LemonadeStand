@@ -21,7 +21,7 @@ namespace LemonadeStand
         public void RunGame()
         {
             GenerateWeek();
-            ui.Title(player.inventory.Money);
+            ui.DisplayTitle(player.inventory.Money);
             for(int i = 0; i<7; i++)
             {
                 RunDay(day[i]);
@@ -73,7 +73,7 @@ namespace LemonadeStand
                         store.RunStore(player);
                         break;
                     case 4:
-
+                        player.RunLemonadeMenu(ui);
                         break;
                     case 5:
 

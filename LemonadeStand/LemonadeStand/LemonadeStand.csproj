@@ -47,6 +47,7 @@
     <Compile Include="Game.cs" />
     <Compile Include="Headline.cs" />
     <Compile Include="News.cs" />
+    <Compile Include="Recipe.cs" />
     <Compile Include="Store.cs" />
     <Compile Include="Supplies.cs" />
     <Compile Include="Inventory.cs" />

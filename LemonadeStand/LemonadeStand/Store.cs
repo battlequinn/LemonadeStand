@@ -19,7 +19,7 @@ namespace LemonadeStand
                 choice = DisplayStore(player.inventory.supplies);
                 if (choice != 5)
                 {
-                    int amount = SetAmount();
+                    int amount = player.SetAmount();
                     double expense = GetExpense(choice, amount, player.inventory);
                     bool enoughMoney = DetermineEnoughMoney(expense, playerMoney);
                     if (enoughMoney == true)
@@ -77,26 +77,6 @@ namespace LemonadeStand
                 }
             } while (loop == true);
             return answer;
-        }
-        private int SetAmount()
-        {
-            bool loop = true;
-            int amount;
-            do
-            {
-                Console.WriteLine("\nHow many would you like? \n(Positive whole numbers only)");
-                bool result = Int32.TryParse(Console.ReadLine(), out amount);
-                if (result && amount >= 0 && amount <= 1000)
-                {
-                    loop = false;
-                }
-                else
-                {
-                    Console.WriteLine("\nERROR: Unable to read input. Please enter a positive whole number.\n");
-                }
-            } while (loop == true);
-
-            return amount;
         }
         private double GetExpense(int item, int amount, Inventory inventory)
         {

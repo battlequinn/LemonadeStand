@@ -11,7 +11,7 @@ namespace LemonadeStand
         public UserInterface()
         {
         }
-        public void Title(double money)
+        public void DisplayTitle(double money)
         {
             Console.WriteLine("Welcome to...\n\n(Press any key to continue)");
             Console.ReadKey();
@@ -70,6 +70,18 @@ namespace LemonadeStand
                 }
             } while (loop == true);
             return answer;
+        }
+        public void DisplayLemonadeMenu()
+        {
+            Console.WriteLine("=====================================================================================================");
+            Console.WriteLine("                                           LEMONADE MENU                                             ");
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine("Here you can create your recipe and make your desired amount of lemonade for the day.");
+            Console.WriteLine("\n           -Standard Lemonade Recipe-");
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine("Lemons: 5\nSugar: 16 tbsp = 1 cup\nIce: 25 cubes\n\nThis makes 1 pitcher of standard lemonade.");
+            Console.WriteLine("(1 pitcher sells 10 cups)");
+            Console.WriteLine("=====================================================================================================\n");
         }
     }
 }
