@@ -10,7 +10,6 @@ namespace LemonadeStand
     {
         public void RunStore(Player player)
         {
-            Console.Clear();
             int choice;
             do
             {
@@ -24,7 +23,7 @@ namespace LemonadeStand
                     bool enoughMoney = DetermineEnoughMoney(expense, playerMoney);
                     if (enoughMoney == true)
                     {
-                        int confirmation = GetConfirmation(expense, playerMoney);
+                        int confirmation = ConfirmTransaction(expense, playerMoney);
                         if (confirmation == 1)
                         {
                             player.BuyIngredients(choice, amount, expense);
@@ -97,7 +96,7 @@ namespace LemonadeStand
             }
             return enoughMoney;
         }
-        private int GetConfirmation(double expense, double playerMoney)
+        private int ConfirmTransaction(double expense, double playerMoney)
         {
             int answer;
             bool result;

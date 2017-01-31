@@ -8,7 +8,7 @@ namespace LemonadeStand
 {
     public class Inventory
     {
-        Recipe recipe = new Recipe();
+        public Recipe recipe;
         private double money;
         public List<Supplies> supplies;
 
@@ -17,6 +17,7 @@ namespace LemonadeStand
         {
             money = 25;
             supplies = new List<Supplies>();
+            recipe = new Recipe();
         }
         public void DisplayInventory()
         {

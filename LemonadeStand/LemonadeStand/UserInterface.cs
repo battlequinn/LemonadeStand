@@ -49,7 +49,7 @@ namespace LemonadeStand
         {
             Console.WriteLine("=====================================================================================================");
             Console.WriteLine("Home");
-            Console.WriteLine("\nHere you can check your inventory, make a trip to the store, prepare your recipe, and make lemonade.");
+            Console.WriteLine("\nHere you can check your inventory, read the news, make a trip to the store, and make lemonade.");
             Console.WriteLine("\nOnce you're finished, select the 'Set Up Stand' option to sell your lemonade and finish the day.");
             Console.WriteLine("\nIf you wish you may select the retire button to quit.");
             Console.WriteLine("=====================================================================================================");
@@ -71,7 +71,7 @@ namespace LemonadeStand
             } while (loop == true);
             return answer;
         }
-        public void DisplayLemonadeMenu()
+        public int DisplayMakeLemonadeMenu()
         {
             Console.WriteLine("=====================================================================================================");
             Console.WriteLine("                                           LEMONADE MENU                                             ");
@@ -81,7 +81,25 @@ namespace LemonadeStand
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine("Lemons: 5\nSugar: 16 tbsp = 1 cup\nIce: 25 cubes\n\nThis makes 1 pitcher of standard lemonade.");
             Console.WriteLine("(1 pitcher sells 10 cups)");
+            Console.WriteLine("\nWhat would you like to do?");
             Console.WriteLine("=====================================================================================================\n");
+            bool loop = false;
+            int answer;
+            do
+            {
+                Console.WriteLine("\n1) Write Recipe \n2) Make Lemonade \n3) Quit");
+                bool result = Int32.TryParse(Console.ReadLine(), out answer);
+                if (result && (answer == 1 || answer == 2 || answer == 3))
+                {
+                    loop = false;
+                }
+                else
+                {
+                    Console.WriteLine("ERROR: Unable to read input. Please type the number corresponding to your selection of choice.");
+                    loop = true;
+                }
+            } while (loop == true);
+            return answer;
         }
     }
 }

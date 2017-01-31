@@ -14,25 +14,88 @@ namespace LemonadeStand
         {
             inventory = new Inventory();
         }
+
+
         public void BuyIngredients(int item, int amount, double expense)
         {
             inventory.supplies[item].Quantity += amount;
             inventory.Money -= expense;
         }
+
+
         public void RunLemonadeMenu(UserInterface ui)
         {
-            ui.DisplayLemonadeMenu();
-            int item = ChooseRecipeItem();
-            int amountUsed = SetAmount();
-            bool enoughItem = CheckAmount(inventory.supplies[item], amountUsed);
-            if (enoughItem == true)
+            int choice;
+            do {
+                Console.Clear();
+                choice = ui.DisplayMakeLemonadeMenu();
+                switch (choice)
+                {
+                    case 1:
+                        SetRecipe();
+                        break;
+                    case 2:
+                        MakeLemonade();
+                        break;
+                    case 3:
+                        break;
+                    default:
+                        Console.WriteLine("There was an error in processing your request.");
+                        Console.ReadKey();
+                        break;
+                }
+            } while (choice != 3);
+        }
+        private void SetRecipe()
+        {
+            int item;
+            do
             {
-                AddIngredient();
+                Console.Clear();
+                item = ChooseRecipeItem();
+                if (item != 4)
+                {
+                    int amountUsed = SetAmount();
+                    AddIngredientToRecipe(item, amountUsed);
+                }
+            } while (item != 4);
+        }
+        private void MakeLemonade()
+        {
+            bool enoughSupplies = CheckSupplies();
+            if (enoughSupplies == true)
+            {
+                int choice;
+                do
+                {
+                    Console.Clear();
+                    inventory.recipe.DisplayRecipe();
+                    inventory.DisplayInventory();
+                    choice = ChooseMakeLemonade();
+                    if (choice != 2)
+                    {
+                        int confirmation = ConfirmPitcherAddition();
+                        if (confirmation == 1)
+                        {
+                            MakePitcher();
+                        }
+                    }
+                } while (choice != 2);
+            }
+            else
+            {
+                Console.WriteLine("You don't have enough supplies for that.");
+                Console.ReadKey();
             }
         }
         private int ChooseRecipeItem()
         {
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine("Which ingredient would you like to add?");
+            Console.WriteLine("\n-Adding Lemons increases sourness.");
+            Console.WriteLine("-Adding Sugar increases sweetness.");
+            Console.WriteLine("-Adding Ice decreases temperature.");
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             bool loop = false;
             int answer;
             do
@@ -44,7 +107,6 @@ namespace LemonadeStand
                 bool result = Int32.TryParse(Console.ReadLine(), out answer);
                 if (result && (answer == 1 || answer == 2 || answer == 3 || answer == 4))
                 {
-                    answer -= 1;
                     loop = false;
                 }
                 else
@@ -75,18 +137,84 @@ namespace LemonadeStand
 
             return amount;
         }
-        private bool CheckAmount(Supplies item, int amountUsed)
+        private void AddIngredientToRecipe(int item, int amountUsed)
         {
-            bool enoughItem = false;
-            if (item.Quantity >= amountUsed)
+            switch (item)
             {
-                enoughItem = true;
+                case 1:
+                    inventory.recipe.Lemons = amountUsed;
+                    break;
+                case 2:
+                    inventory.recipe.Sugar = amountUsed;
+                    break;
+                case 3:
+                    inventory.recipe.Ice = amountUsed;
+                    break;
+                default:
+                    Console.WriteLine("There was an error in processing your request.");
+                    break;
             }
-            return enoughItem;
         }
-        private void AddIngredient()
+        private bool CheckSupplies()
         {
-
+            bool enoughSupplies = false;
+            if (inventory.supplies[0].Quantity >= inventory.recipe.Lemons && inventory.supplies[1].Quantity >= inventory.recipe.Sugar &&
+                inventory.supplies[2].Quantity >= inventory.recipe.Ice && inventory.supplies[4].Quantity >= 1)
+            {
+                enoughSupplies = true;
+            }
+            return enoughSupplies;
+        }
+        private int ChooseMakeLemonade()
+        {
+            Console.WriteLine("Make pitcher of lemonade?");
+            bool loop = false;
+            int answer;
+            do
+            {
+                Console.WriteLine($"1) Yes");
+                Console.WriteLine($"2) No");
+                bool result = Int32.TryParse(Console.ReadLine(), out answer);
+                if (result && (answer == 1 || answer == 2))
+                {
+                    loop = false;
+                }
+                else
+                {
+                    Console.WriteLine("\nERROR: Unable to read input. Please type the number corresponding to your selection of choice.\n");
+                    loop = true;
+                }
+            } while (loop == true);
+            return answer;
+        }
+        private int ConfirmPitcherAddition()
+        {
+            int answer;
+            bool result;
+            Console.WriteLine("You are about to permanently submit these ingredients.\nAre you sure you want to complete this action?");
+            do
+            {
+                Console.WriteLine("\n1) Yes 2) No");
+                result = Int32.TryParse(Console.ReadLine(), out answer);
+                if (result && (answer == 1 || answer == 2))
+                {
+                    result = true;
+                }
+                else
+                {
+                    Console.WriteLine("\nError: Incorrect entry. Please type in the numbers '1' or '2'.\n");
+                    result = false;
+                }
+            } while (result == false);
+            return answer;
+        }
+        private void MakePitcher()
+        {
+            inventory.supplies[0].Quantity -= inventory.recipe.Lemons;
+            inventory.supplies[1].Quantity -= inventory.recipe.Sugar;
+            inventory.supplies[2].Quantity -= inventory.recipe.Ice;
+            inventory.supplies[4].Quantity -= 1;
+            inventory.supplies[5].Quantity++;
         }
     }
 }
