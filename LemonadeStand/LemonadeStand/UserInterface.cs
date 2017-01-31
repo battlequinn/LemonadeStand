@@ -101,7 +101,7 @@ namespace LemonadeStand
             } while (loop == true);
             return answer;
         }
-        public void RunLemonadeMenu(Player player)
+        public void RunMakeLemonadeMenu(Player player)
         {
             int choice;
             do

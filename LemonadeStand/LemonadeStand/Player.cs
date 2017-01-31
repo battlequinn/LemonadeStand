@@ -9,7 +9,6 @@ namespace LemonadeStand
     public class Player
     {
         public Inventory inventory;
-        public Store store;
         public Player()
         {
             inventory = new Inventory();

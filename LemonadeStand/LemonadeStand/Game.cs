@@ -52,7 +52,7 @@ namespace LemonadeStand
             player.inventory.supplies.Add(new Supplies("Pitchers", 3.00, 0));
             player.inventory.supplies.Add(new Supplies("Pitchers of lemonade", 0, 0));
         }
-        public void RunHome(Day day)
+        private void RunHome(Day day)
         {
             int playerOption;
             do
@@ -73,7 +73,7 @@ namespace LemonadeStand
                         store.RunStore(player);
                         break;
                     case 4:
-                        ui.RunLemonadeMenu(player);
+                        ui.RunMakeLemonadeMenu(player);
                         break;
                     case 5:
                         player.SetStand();
