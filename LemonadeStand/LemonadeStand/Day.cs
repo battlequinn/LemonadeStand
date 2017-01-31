@@ -8,6 +8,7 @@ namespace LemonadeStand
 {
     public class Day
     {
+        public List<Customers> customers = new List<Customers>();
         public Weather weather = new Weather();
         public News news = new News();
         private string name;
@@ -49,6 +50,10 @@ namespace LemonadeStand
                     break;
             }
             return Name;
+        }
+        public void SetCustomers()
+        {
+
         }
     }
 }

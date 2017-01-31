@@ -12,21 +12,25 @@ namespace LemonadeStand
         private string[] overcast = new string[5] { "sunny", "cloudy", "partly cloudy", "raining", "thunder-storming" };
         private string[] temperature = new string[4] { "warm", "hot", "cool", "frigid" };
 
+        private string dayOvercast;
+        private string dayTemperature;
+
+        public string DayOvercast { get { return dayOvercast; } set { dayOvercast = value; } }
+        public string DayTemperature { get { return dayTemperature; } set { dayTemperature = value; } }
+
         public Weather()
         {
         }
 
-        public string SetDayOvercast(Random random)
+        public void SetDayOvercast(Random random)
         {
             int overcastType = random.Next(0, overcast.Length);
-            string dayOvercast = overcast[overcastType];
-            return dayOvercast;
+            DayOvercast = overcast[overcastType];
         }
-        public string SetDayTemperature(Random random)
+        public void SetDayTemperature(Random random)
         {
             int temperatureType = random.Next(0, temperature.Length);
-            string dayTemperature = temperature[temperatureType];
-            return dayTemperature;
+            DayTemperature = temperature[temperatureType];
         }
 
     }

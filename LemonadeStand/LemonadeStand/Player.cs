@@ -21,32 +21,7 @@ namespace LemonadeStand
             inventory.supplies[item].Quantity += amount;
             inventory.Money -= expense;
         }
-
-
-        public void RunLemonadeMenu(UserInterface ui)
-        {
-            int choice;
-            do {
-                Console.Clear();
-                choice = ui.DisplayMakeLemonadeMenu();
-                switch (choice)
-                {
-                    case 1:
-                        SetRecipe();
-                        break;
-                    case 2:
-                        MakeLemonade();
-                        break;
-                    case 3:
-                        break;
-                    default:
-                        Console.WriteLine("There was an error in processing your request.");
-                        Console.ReadKey();
-                        break;
-                }
-            } while (choice != 3);
-        }
-        private void SetRecipe()
+        public void SetRecipe()
         {
             int item;
             do
@@ -60,7 +35,7 @@ namespace LemonadeStand
                 }
             } while (item != 4);
         }
-        private void MakeLemonade()
+        public void MakeLemonade()
         {
             bool enoughSupplies = CheckSupplies();
             if (enoughSupplies == true)
@@ -215,6 +190,30 @@ namespace LemonadeStand
             inventory.supplies[2].Quantity -= inventory.recipe.Ice;
             inventory.supplies[4].Quantity -= 1;
             inventory.supplies[5].Quantity++;
+        }
+        public void SetStand()
+        {
+            double cupPrice = SetSellPrice();
+        }
+        private double SetSellPrice()
+        {
+            bool loop = true;
+            double amount;
+            do
+            {
+                Console.WriteLine("\nBefore we start, please set the price you would like to sell your cups of lemonade at.");
+                bool result = Double.TryParse(Console.ReadLine(), out amount);
+                if (result && amount >= 0 && amount <= 1000)
+                {
+                    loop = false;
+                }
+                else
+                {
+                    Console.WriteLine("\nERROR: Unable to read input. Please enter a positive number.\n");
+                }
+            } while (loop == true);
+
+            return amount;
         }
     }
 }

@@ -73,10 +73,10 @@ namespace LemonadeStand
                         store.RunStore(player);
                         break;
                     case 4:
-                        player.RunLemonadeMenu(ui);
+                        ui.RunLemonadeMenu(player);
                         break;
                     case 5:
-
+                        player.SetStand();
                         break;
                     case 6:
 

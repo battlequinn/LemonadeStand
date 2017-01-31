@@ -101,5 +101,29 @@ namespace LemonadeStand
             } while (loop == true);
             return answer;
         }
+        public void RunLemonadeMenu(Player player)
+        {
+            int choice;
+            do
+            {
+                Console.Clear();
+                choice = DisplayMakeLemonadeMenu();
+                switch (choice)
+                {
+                    case 1:
+                        player.SetRecipe();
+                        break;
+                    case 2:
+                        player.MakeLemonade();
+                        break;
+                    case 3:
+                        break;
+                    default:
+                        Console.WriteLine("There was an error in processing your request.");
+                        Console.ReadKey();
+                        break;
+                }
+            } while (choice != 3);
+        }
     }
 }

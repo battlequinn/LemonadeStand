@@ -10,31 +10,46 @@ namespace LemonadeStand
     {
         Headline headline = new Headline();
         TasteOfTheDay tasteOfTheDay = new TasteOfTheDay();
+
+        private string currentDay;
+        private string todaysHeadline;
+        private string daysWeather;
+        private string weeksWeather;
+        private string taste;
+
+        public string CurrentDay { get { return currentDay; } set { currentDay = value; } }
+        public string TodaysHeadline { get { return todaysHeadline; } set { todaysHeadline = value; } }
+        public string DaysWeather { get { return daysWeather; } set { daysWeather = value; } }
+        public string WeeksWeather { get { return weeksWeather; } set { weeksWeather = value; } }
+        public string Taste { get { return taste; } set { taste = value; } }
+
+
+
         public News()
         {
         }
         public void GetNews(Day day, List<Day> days, Random random)
         {
-            string currentDay = GetDay(day);
-            string headline = GetHeadline(random);
-            string daysWeather = GetDailyWeather(day, random);
-            string weeksWeather = GetWeeklyWeather(day, days, random);
-            string taste = GetTasteOfTheDay(random);
-            DisplayNews(currentDay, headline, daysWeather, weeksWeather, taste);
+            CurrentDay = GetDay(day);
+            TodaysHeadline = GetHeadline(random);
+            DaysWeather = GetDailyWeather(day, random);
+            WeeksWeather = GetWeeklyWeather(day, days, random);
+            Taste = GetTasteOfTheDay(random);
+            DisplayNews();
         }
-        private void DisplayNews(string currentDay, string headline, string daysWeather, string weeksWeather, string taste)
+        private void DisplayNews()
         {
             Console.WriteLine("=====================================================================================================");
-            Console.WriteLine($"{currentDay}                               The Daily Lemon");
+            Console.WriteLine($"{CurrentDay}                               The Daily Lemon");
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            Console.WriteLine((headline));
+            Console.WriteLine((TodaysHeadline));
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            Console.WriteLine($"Weather: {daysWeather}");
+            Console.WriteLine($"Weather: {DaysWeather}");
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine("Weekly forcast\n");
-            Console.WriteLine(weeksWeather);
+            Console.WriteLine(WeeksWeather);
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            Console.WriteLine(taste);
+            Console.WriteLine(Taste);
             Console.WriteLine("=====================================================================================================");
             Console.ReadKey();
         }
@@ -57,8 +72,10 @@ namespace LemonadeStand
         }
         private string GetDailyWeather(Day day, Random random)
         {
-            string overcast = day.weather.SetDayOvercast(random);
-            string temperature = day.weather.SetDayTemperature(random);
+            day.weather.SetDayOvercast(random);
+            day.weather.SetDayTemperature(random);
+            string overcast = day.weather.DayOvercast;
+            string temperature = day.weather.DayTemperature;
             string weatherReport = $"Today's Temperature will be {temperature} and {overcast}.";
             return weatherReport;
         }
@@ -67,8 +84,10 @@ namespace LemonadeStand
             string weatherReport = "";
             for ( int i = 0; i < 7; i++)
             {
-                string overcast = days[i].weather.SetDayOvercast(random);
-                string temperature = days[i].weather.SetDayTemperature(random);
+                days[i].weather.SetDayOvercast(random);
+                days[i].weather.SetDayTemperature(random);
+                string overcast = days[i].weather.DayOvercast;
+                string temperature = days[i].weather.DayTemperature;
                 if (days[i].number != day.number)
                 {
                     weatherReport += $"{days[i].Name}: {temperature} and {overcast}\n";

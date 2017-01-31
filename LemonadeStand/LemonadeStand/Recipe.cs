@@ -8,6 +8,9 @@ namespace LemonadeStand
 {
     public class Recipe
     {
+        //SOLID Principle: Single-Responsibility Principle
+        //This recipe class is a good example of this principle because it exists to 
+
         private int lemons;
         private int sugar;
         private int ice;
