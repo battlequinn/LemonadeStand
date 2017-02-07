@@ -21,8 +21,8 @@ namespace LemonadeStand
             Console.WriteLine("                       *       *          ");
             Console.WriteLine("                     *            *   **      ");
             Console.WriteLine("                        *  *  *    ***         ");
-            Console.WriteLine("                                 ** * *     ");
-            Console.WriteLine("                 ****************   *   *  ");
+            Console.WriteLine("                              ***** * *     ");
+            Console.WriteLine("                 ***************    *   *  ");
             Console.WriteLine("          *********************    *     *    ");
             Console.WriteLine("      ************************   *       *   ");
             Console.WriteLine("    ****                  ****   *      *  ");
@@ -71,15 +71,13 @@ namespace LemonadeStand
             } while (loop == true);
             return answer;
         }
-        public int DisplayMakeLemonadeMenu()
+        public int DisplayMakeLemonadeMenu(Player player)
         {
             Console.WriteLine("=====================================================================================================");
             Console.WriteLine("                                           LEMONADE MENU                                             ");
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine("Here you can create your recipe and make your desired amount of lemonade for the day.");
-            Console.WriteLine("\n           -Standard Lemonade Recipe-");
-            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            Console.WriteLine("Lemons: 5\nSugar: 16 tbsp = 1 cup\nIce: 25 cubes\n\nThis makes 1 pitcher of standard lemonade.");
+            player.inventory.recipe.DisplayRecipe();
             Console.WriteLine("(1 pitcher sells 10 cups)");
             Console.WriteLine("\nWhat would you like to do?");
             Console.WriteLine("=====================================================================================================\n");
@@ -87,7 +85,7 @@ namespace LemonadeStand
             int answer;
             do
             {
-                Console.WriteLine("\n1) Write Recipe \n2) Make Lemonade \n3) Quit");
+                Console.WriteLine("\n1) Write Recipe \n2) Make Lemonade \n3) Leave");
                 bool result = Int32.TryParse(Console.ReadLine(), out answer);
                 if (result && (answer == 1 || answer == 2 || answer == 3))
                 {
@@ -107,7 +105,7 @@ namespace LemonadeStand
             do
             {
                 Console.Clear();
-                choice = DisplayMakeLemonadeMenu();
+                choice = DisplayMakeLemonadeMenu(player);
                 switch (choice)
                 {
                     case 1:

@@ -1,19 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="faee56d1-e36e-4f82-ad65-5344389b4d97" name="LemonadeClassUML" linkedPackageId="4bb45228-cf71-49e7-8ce7-9f7cbc1f3dd8" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
-  <profileInstances>
-    <packageHasProfileInstances Id="29eea0e4-97a8-4680-9856-ec292a94b08c">
-      <profileInstance Id="de1c420a-84ec-40c1-b558-3b2ef279874c" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="42fc0daa-04f7-46e5-83d0-fcd553a82dd3">
-      <profileInstance Id="40f9aed3-049e-421e-aedf-87eab719ca01" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-  </profileInstances>
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="7a37710a-b69a-42b3-9eb5-81ee1ab91feb" name="Game" isAbstract="false" isLeaf="false" isActiveClass="false">
@@ -203,22 +189,6 @@
       <class Id="089e48f3-43ae-4636-9ec6-09e7c5af0112" name="UserInterface" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="ff67cd3b-72a8-4e7a-86cf-7585a177d140" />
         <targetEnds>
-          <association Id="0945abe3-287c-4a1a-8250-2df81e13b99a" isDerived="false" sourceEndRoleName="UserInterface" targetEndRoleName="Game" isLeaf="false" isAbstract="false">
-            <classMoniker Id="7a37710a-b69a-42b3-9eb5-81ee1ab91feb" LastKnownName="Game" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd Id="9a0acb46-5c48-4eca-96b7-8e3423f3e438" name="UserInterface" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="e3802290-8c8a-456e-8af1-7f7a0f1f6ae2" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd Id="c3051248-a373-49b4-ae0d-b2bcb901ec26" name="Game" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="4293119a-4fb8-4647-b564-01f85e51786d" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-            <elementDefinition Id="bb3d5711-c46f-4699-9199-c0dc5ecee818" />
-          </association>
           <association Id="fdbf02d3-a9ab-4378-8710-0a439ae2e94b" isDerived="false" sourceEndRoleName="UserInterface" targetEndRoleName="Player" isLeaf="false" isAbstract="false">
             <classMoniker Id="3950b703-f95a-4628-a5a5-72834bd1f721" LastKnownName="Player" />
             <relationshipOwnedElementsInternal>
@@ -1464,5 +1434,19 @@
   </packagedElements>
   <package Id="4bb45228-cf71-49e7-8ce7-9f7cbc1f3dd8" name="LemonadeStandClassUML">
     <elementDefinition Id="a86ac586-fd45-411a-870f-8ff3f5f928e5" />
+    <profileInstances>
+      <packageHasProfileInstances Id="29eea0e4-97a8-4680-9856-ec292a94b08c">
+        <profileInstance Id="de1c420a-84ec-40c1-b558-3b2ef279874c" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="42fc0daa-04f7-46e5-83d0-fcd553a82dd3">
+        <profileInstance Id="40f9aed3-049e-421e-aedf-87eab719ca01" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </logicalClassDesignerModel>

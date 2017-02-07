@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LemonadeStand", "LemonadeSt
 EndProject
 Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "LemonadeStandClassUML", "LemonadeStandClassUML\LemonadeStandClassUML.modelproj", "{48F28AD0-CAB9-4A39-9FBB-179B216B702D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LemonadeStandUnitTest", "LemonadeStandUnitTest\LemonadeStandUnitTest.csproj", "{61DE4EC1-D35B-46BD-809D-72C99503D58B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{48F28AD0-CAB9-4A39-9FBB-179B216B702D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48F28AD0-CAB9-4A39-9FBB-179B216B702D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48F28AD0-CAB9-4A39-9FBB-179B216B702D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61DE4EC1-D35B-46BD-809D-72C99503D58B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61DE4EC1-D35B-46BD-809D-72C99503D58B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61DE4EC1-D35B-46BD-809D-72C99503D58B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61DE4EC1-D35B-46BD-809D-72C99503D58B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

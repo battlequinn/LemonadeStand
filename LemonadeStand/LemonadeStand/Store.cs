@@ -36,7 +36,7 @@ namespace LemonadeStand
                     }
                     else
                     {
-                        Console.WriteLine($"Sorry, you don't have enough money.\nThat costs {expense}, and you only have {playerMoney}.\nPlease lower your amount next time.");
+                        Console.WriteLine($"Sorry, you don't have enough money.\nThat costs ${expense}, and you only have ${playerMoney}.\nPlease lower your amount next time.");
                     }
                 }
                 Console.ReadKey();
@@ -84,7 +84,7 @@ namespace LemonadeStand
             expense = amount * itemPrice;
             return expense;
         }
-        private bool DetermineEnoughMoney(double expense, double playerMoney)
+        public bool DetermineEnoughMoney(double expense, double playerMoney)
         {
             bool enoughMoney = false;
             if(expense > playerMoney)

@@ -11,7 +11,7 @@ namespace LemonadeStand
     {
         UserInterface ui = new UserInterface();
         List<Day> day = new List<Day>();
-        Player player = new Player();
+        public Player player = new Player();
         Store store = new Store();
         Random random = new Random();
         
@@ -43,7 +43,7 @@ namespace LemonadeStand
 
             }
         }
-        private void SetInitialSupplies()
+        public void SetInitialSupplies()
         {
             player.inventory.supplies.Add(new Supplies("Lemons", 0.50, 0));
             player.inventory.supplies.Add(new Supplies("Sugar(tbsp)", 0.10, 0));
@@ -76,7 +76,7 @@ namespace LemonadeStand
                         ui.RunMakeLemonadeMenu(player);
                         break;
                     case 5:
-                        player.SetStand();
+                        player.SetStand(day, random);
                         break;
                     case 6:
 

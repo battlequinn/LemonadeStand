@@ -64,12 +64,12 @@ namespace LemonadeStand
         }
         private int ChooseRecipeItem()
         {
-            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine("Which ingredient would you like to add?");
             Console.WriteLine("\n-Adding Lemons increases sourness.");
             Console.WriteLine("-Adding Sugar increases sweetness.");
-            Console.WriteLine("-Adding Ice decreases temperature.");
-            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine("-Adding Ice decreases temperature.\n");
+            inventory.recipe.DisplayRecipe();
             bool loop = false;
             int answer;
             do
@@ -190,9 +190,15 @@ namespace LemonadeStand
             inventory.supplies[4].Quantity -= 1;
             inventory.supplies[5].Quantity++;
         }
-        public void SetStand()
+        public void SetStand(Day day, Random random)
         {
             double cupPrice = SetSellPrice();
+            day.SetCustomers(random);
+            int peopleAmount = day.customers.Count;
+            foreach(Customers customer in day.customers)
+            {
+                day.customers.
+            }
         }
         private double SetSellPrice()
         {

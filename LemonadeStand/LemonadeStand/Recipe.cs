@@ -27,10 +27,15 @@ namespace LemonadeStand
         }
         public void DisplayRecipe()
         {
-            Console.WriteLine("=============");
-            Console.WriteLine("  Recipe  ");
-            Console.WriteLine("_____________");
-            Console.WriteLine($"Lemons: {Lemons} \nSugar: {sugar} \nIce: {Ice}");
+            Console.WriteLine("\n           -Standard Lemonade Recipe-");
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine("Lemons: 5\nSugar: 16 tbsp = 1 cup\nIce: 25 cubes\n\nThis makes 1 pitcher of standard lemonade.");
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine("\n           -Your Lemonade Recipe-");
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine($"Lemons: {Lemons}\nSugar: {Sugar}\nIce: {Ice}");
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
         }
     }
 }

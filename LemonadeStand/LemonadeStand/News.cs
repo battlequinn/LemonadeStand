@@ -53,7 +53,7 @@ namespace LemonadeStand
             Console.WriteLine("=====================================================================================================");
             Console.ReadKey();
         }
-        private string GetDay(Day day)
+        public string GetDay(Day day)
         {
             string currentDay = $"Day {day.number}: {day.Name}";
             return currentDay;
@@ -65,8 +65,10 @@ namespace LemonadeStand
         }
         private string GetTasteOfTheDay(Random random)
         {
-            string currentTaste = tasteOfTheDay.WriteTaste(random);
-            string currentTemp = tasteOfTheDay.WriteTemp(random);
+            tasteOfTheDay.WriteTaste(random);
+            string currentTaste = tasteOfTheDay.DayTaste;
+            tasteOfTheDay.WriteTemp(random);
+            string currentTemp = tasteOfTheDay.DayTemp;
             string taste = $"Taste Of The Day: {currentTaste}, {currentTemp} lemonade!";
             return taste;
         }

@@ -387,45 +387,6 @@
         isActiveClass="false">
         <targetEnds>
           <association
-            Id="bb3d5711-c46f-4699-9199-c0dc5ecee818"
-            isDerived="false"
-            sourceEndRoleName="UserInterface"
-            targetEndRoleName="Game"
-            isLeaf="false"
-            isAbstract="false">
-            <classMoniker
-              Id="3ca4c924-80e7-4445-99fc-c3dd7951d8c0"
-              LastKnownName="Game"
-              LastKnownLocation="LemonadeStandClassUML.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="e3802290-8c8a-456e-8af1-7f7a0f1f6ae2"
-                  name="UserInterface"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="Shared"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="4293119a-4fb8-4647-b564-01f85e51786d"
-                  name="Game"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
             Id="83dc7e81-8105-4033-b8cd-5b1317cb2064"
             isDerived="false"
             sourceEndRoleName="UserInterface"
