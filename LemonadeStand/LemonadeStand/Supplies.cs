@@ -17,9 +17,9 @@ namespace LemonadeStand
         public int Quantity { get { return quantity; } set { quantity = value; } }
         public Supplies(string name, double price, int quantity)
         {
-            this.name = name;
-            this.price = price;
-            this.quantity = quantity;
+            Name = name;
+            Price = price;
+            Quantity = quantity;
         }
     }
 }

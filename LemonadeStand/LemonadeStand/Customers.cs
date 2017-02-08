@@ -9,71 +9,74 @@ namespace LemonadeStand
     public class Customers
     {
         private int demand = 0;
-        private int palate;
         public int Demand { get { return demand; } set { demand = value; } }
         public Customers()
         {
         }
-        public void SetDemand()
+        public void SetDemand(TasteOfTheDay tasteOfDay, PitcherOfLemonade pitcher,double cupPrice, Random random)
         {
-            int tasteTasteValue;
-            int tasteTempValue;
-            int palateValue;
-            int price;
+            int tasteValue = SetTasteValue(tasteOfDay, pitcher, random);
+            int priceValue = SetPriceValue(cupPrice, random);
+
+            Demand = tasteValue + priceValue + random.Next(0, 26);
         }
-        private int SetTasteTasteValue(TasteOfTheDay tasteOfDay, Random random)
+        private int SetTasteValue(TasteOfTheDay tasteOfDay, PitcherOfLemonade pitcher, Random random)
         {
             string taste = tasteOfDay.DayTaste;
-            if(taste >=)
+            string temperature = tasteOfDay.DayTemp;
+            string tasteTemp = GetTasteTemp(pitcher);
+            string sweet = GetSweetTaste(pitcher);
+            string sour = GetSourTaste(pitcher);
+            int tasteValue = 0;
+            if(taste == sweet || taste == sour)
+            {
+                tasteValue += random.Next(0, 26);
+            }else
+            {
+                tasteValue += random.Next(0, 13);
+            }
+
+            if(temperature == tasteTemp)
+            {
+                tasteValue += random.Next(0, 26);
+            }else
+            {
+                tasteValue += random.Next(0, 13);
+            }
+            return tasteValue;
         }
-        private string GetSourTaste(Recipe recipe)
+        private string GetSourTaste(PitcherOfLemonade pitcher)
         {
-            string tartness;
-            if(recipe.Lemons >= 7 && recipe.Lemons < 10)
+            string sour;
+            if (pitcher.Lemons > 5)
             {
-                tartness = "sour";
-            }else if(recipe.Lemons >= 5 && recipe.Lemons < 7)
+                sour = "sour";
+            }else
             {
-                tartness = "standard";
-            }else if(recipe.Lemons >= 10)
-            {
-                tartness = "too sour";
+                sour = "not sour";
             }
-            else
-            {
-                tartness = "bad";
-            }
-            return tartness;
+            return sour;
         }
-        private string GetSweetTaste(Recipe recipe)
+        private string GetSweetTaste(PitcherOfLemonade pitcher)
         {
-            string sweetness;
-            if (recipe.Sugar >= 20 && recipe.Sugar < 26)
+            string sweet;
+            if (pitcher.Sugar > 16)
             {
-                sweetness = "sweet";
-            }
-            else if (recipe.Sugar >= 16 && recipe.Sugar < 20)
+                sweet = "sweet";
+            }else
             {
-                sweetness = "standard";
+                sweet = "not sweet";
             }
-            else if (recipe.Sugar >= 26)
-            {
-                sweetness = "too sweet";
-            }
-            else
-            {
-                sweetness = "bad";
-            }
-            return sweetness;
+            return sweet;
         }
-        private string GetTasteTemp(Recipe recipe)
+        private string GetTasteTemp(PitcherOfLemonade pitcher)
         {
             string temperature;
-            if (recipe.Ice >= 35)
+            if (pitcher.Ice > 30)
             {
                 temperature = "ice-cold";
             }
-            else if (recipe.Ice >= 25 && recipe.Ice < 35)
+            else if (pitcher.Ice >= 20 && pitcher.Ice <= 30)
             {
                 temperature = "cool";
             }
@@ -82,6 +85,18 @@ namespace LemonadeStand
                 temperature = "warm";
             }
             return temperature;
+        }
+        private int SetPriceValue(double cupPrice, Random random)
+        {
+            int priceValue = 0;
+            if(cupPrice < 1)
+            {
+                priceValue = random.Next(0, 26);
+            }else
+            {
+                priceValue = random.Next(0, 13);
+            }
+            return priceValue;
         }
     }
 }

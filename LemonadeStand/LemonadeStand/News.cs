@@ -8,8 +8,8 @@ namespace LemonadeStand
 {
     public class News
     {
-        Headline headline = new Headline();
-        TasteOfTheDay tasteOfTheDay = new TasteOfTheDay();
+        public Headline headline = new Headline();
+        public TasteOfTheDay tasteOfTheDay = new TasteOfTheDay();
 
         private string currentDay;
         private string todaysHeadline;

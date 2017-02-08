@@ -14,7 +14,6 @@ namespace LemonadeStand
             inventory = new Inventory();
         }
 
-
         public void BuyIngredients(int item, int amount, double expense)
         {
             inventory.supplies[item].Quantity += amount;
@@ -187,17 +186,17 @@ namespace LemonadeStand
             inventory.supplies[0].Quantity -= inventory.recipe.Lemons;
             inventory.supplies[1].Quantity -= inventory.recipe.Sugar;
             inventory.supplies[2].Quantity -= inventory.recipe.Ice;
-            inventory.supplies[4].Quantity -= 1;
-            inventory.supplies[5].Quantity++;
+            inventory.supplies[4].Quantity--;
+            inventory.pitchersOfLemonade.Add(new PitcherOfLemonade(inventory.recipe.Lemons, inventory.recipe.Sugar, inventory.recipe.Ice, 1));
         }
         public void SetStand(Day day, Random random)
         {
             double cupPrice = SetSellPrice();
             day.SetCustomers(random);
             int peopleAmount = day.customers.Count;
-            foreach(Customers customer in day.customers)
+            for(int i = 0; i < peopleAmount; i++)
             {
-                day.customers.
+                day.customers[i].SetDemand(day.news.tasteOfTheDay, inventory.pitchersOfLemonade, cupPrice, random);
             }
         }
         private double SetSellPrice()
