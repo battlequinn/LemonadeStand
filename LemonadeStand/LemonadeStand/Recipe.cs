@@ -31,7 +31,6 @@ namespace LemonadeStand
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine($"Lemons: {Lemons}\nSugar: {Sugar}\nIce: {Ice}");
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-
         }
     }
 }

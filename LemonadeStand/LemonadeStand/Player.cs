@@ -221,7 +221,7 @@ namespace LemonadeStand
             int tempCupCount = inventory.supplies[3].Count;
             for (int i = 0; i < peopleAmount; i++)
             {
-                if (inventory.supplies[3].Quantity > 0 || inventory.supplies[5].Quantity > 0)
+                if (inventory.supplies[3].Quantity > 0 && inventory.supplies[5].Quantity > 0)
                 {
                     int demand = day.customers[i].SetDemand(day.news.tasteOfTheDay, inventory.recipe, cupPrice, random);
                     if (demand > 50)

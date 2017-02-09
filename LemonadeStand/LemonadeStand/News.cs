@@ -33,9 +33,8 @@ namespace LemonadeStand
             DaysWeather = GetDailyWeather(day, random);
             WeeksWeather = GetWeeklyWeather(day, days, random);
             Taste = GetTasteOfTheDay(random);
-            DisplayNews();
         }
-        private void DisplayNews()
+        public void DisplayNews()
         {
             Console.WriteLine("=====================================================================================================");
             Console.WriteLine($"{CurrentDay}                               The Daily Lemon");

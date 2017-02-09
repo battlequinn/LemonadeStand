@@ -36,6 +36,7 @@ namespace LemonadeStand
             Console.Clear();
             double initMoney = player.inventory.Money;
             day.news.GetNews(day, this.day, random);
+            day.news.DisplayNews();
             Console.Clear();
             RunHome(day);
             double finalMoney = player.inventory.Money;
@@ -76,7 +77,7 @@ namespace LemonadeStand
                         Console.ReadKey();
                         break;
                     case 2:
-                        day.news.GetNews(day, this.day, random);
+                        day.news.DisplayNews();
                         break;
                     case 3:
                         store.RunStore(player);
