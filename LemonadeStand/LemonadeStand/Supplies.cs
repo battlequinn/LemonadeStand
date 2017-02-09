@@ -15,6 +15,7 @@ namespace LemonadeStand
         public string Name { get { return name; } set { name = value; } }
         public double Price { get { return price; } set { price = value; } }
         public int Quantity { get { return quantity; } set { quantity = value; } }
+        public int Count { get { return quantity; } }
         public Supplies(string name, double price, int quantity)
         {
             Name = name;

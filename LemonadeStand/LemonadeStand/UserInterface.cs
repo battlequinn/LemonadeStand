@@ -51,15 +51,14 @@ namespace LemonadeStand
             Console.WriteLine("Home");
             Console.WriteLine("\nHere you can check your inventory, read the news, make a trip to the store, and make lemonade.");
             Console.WriteLine("\nOnce you're finished, select the 'Set Up Stand' option to sell your lemonade and finish the day.");
-            Console.WriteLine("\nIf you wish you may select the retire button to quit.");
             Console.WriteLine("=====================================================================================================");
             bool loop = false;
             int answer;
             do
             {
-                Console.WriteLine("\n1) Check inventory 2) Read News 3) Go to store 4) Make Lemonade 5) Set Up Stand 6) Retire");
+                Console.WriteLine("\n1) Check inventory 2) Read News 3) Go to store 4) Make Lemonade 5) Set Up Stand");
                 bool result = Int32.TryParse(Console.ReadLine(), out answer);
-                if (result && (answer == 1 || answer == 2 || answer == 3 || answer == 4 || answer == 5 || answer == 6))
+                if (result && (answer == 1 || answer == 2 || answer == 3 || answer == 4 || answer == 5))
                 {
                     loop = false;
                 }
@@ -76,18 +75,19 @@ namespace LemonadeStand
             Console.WriteLine("=====================================================================================================");
             Console.WriteLine("                                           LEMONADE MENU                                             ");
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            Console.WriteLine("Here you can create your recipe and make your desired amount of lemonade for the day.");
+            Console.WriteLine("Here you can create your recipe, submit your recipe, and make your lemonade for the day.");
             player.inventory.recipe.DisplayRecipe();
             Console.WriteLine("(1 pitcher sells 10 cups)");
+            Console.WriteLine("(You must submit a recipe for the day before you make a pitcher of lemonade.)");
             Console.WriteLine("\nWhat would you like to do?");
             Console.WriteLine("=====================================================================================================\n");
             bool loop = false;
             int answer;
             do
             {
-                Console.WriteLine("\n1) Write Recipe \n2) Make Lemonade \n3) Leave");
+                Console.WriteLine("\n1) Write Recipe \n2) Submit Recipe \n3) Make Lemonade \n4) Leave");
                 bool result = Int32.TryParse(Console.ReadLine(), out answer);
-                if (result && (answer == 1 || answer == 2 || answer == 3))
+                if (result && (answer == 1 || answer == 2 || answer == 3 || answer == 4))
                 {
                     loop = false;
                 }
@@ -109,19 +109,52 @@ namespace LemonadeStand
                 switch (choice)
                 {
                     case 1:
-                        player.SetRecipe();
+                        if(player.inventory.recipe.Submit == false)
+                        {
+                            player.SetRecipe();
+                        }else
+                        {
+                            Console.WriteLine("Sorry, you've already submitted your recipe for the day.");
+                            Console.ReadKey();
+                        }
                         break;
                     case 2:
-                        player.MakeLemonade();
+                        if (player.inventory.recipe.Submit == false)
+                        {
+                            player.SubmitRecipe();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Sorry, you've already submitted your recipe for the day.");
+                            Console.ReadKey();
+                        }
                         break;
                     case 3:
+                        if (player.inventory.recipe.Submit == true)
+                        {
+                            player.MakeLemonade();
+                        }
+                        else
+                        {
+                            Console.WriteLine("You must submit your recipe before you make lemonade.");
+                            Console.ReadKey();
+                        }
+                        break;
+                    case 4:
                         break;
                     default:
                         Console.WriteLine("There was an error in processing your request.");
                         Console.ReadKey();
                         break;
                 }
-            } while (choice != 3);
+            } while (choice != 4);
+        }
+        public void GetTotalMoneyCount(double initMoney, double finalMoney)
+        {
+            double totalMoney = finalMoney - initMoney;
+            Console.ReadKey();
+            Console.WriteLine($"${totalMoney}!");
+            Console.ReadKey();
         }
     }
 }

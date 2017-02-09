@@ -11,7 +11,6 @@ namespace LemonadeStand
         public Recipe recipe;
         private double money;
         public List<Supplies> supplies;
-        public List<PitcherOfLemonade> pitchersOfLemonade;
 
         public double Money { get { return money; } set { money = value; } }
         public Inventory()

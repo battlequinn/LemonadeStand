@@ -7,23 +7,19 @@ using System.Threading.Tasks;
 namespace LemonadeStand
 {
     public class Recipe
-    {
-        //SOLID Principle: Single-Responsibility Principle
-        //This recipe class is a good example of this principle because it exists to 
-
-        private int lemons;
-        private int sugar;
-        private int ice;
+    { 
+        private int lemons = 5;
+        private int sugar = 16;
+        private int ice = 25;
+        private bool submit = false;
 
         public int Lemons { get { return lemons; } set { lemons = value; } }
         public int Sugar { get { return sugar; } set { sugar = value; } }
         public int Ice { get { return ice; } set { ice = value; } }
+        public bool Submit { get { return submit; } set { submit = value; } }
 
         public Recipe()
         {
-            lemons = 5;
-            sugar = 16;
-            ice = 25;
         }
         public void DisplayRecipe()
         {

@@ -23,8 +23,6 @@ namespace LemonadeStand
         public string WeeksWeather { get { return weeksWeather; } set { weeksWeather = value; } }
         public string Taste { get { return taste; } set { taste = value; } }
 
-
-
         public News()
         {
         }

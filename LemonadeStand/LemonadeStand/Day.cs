@@ -60,7 +60,7 @@ namespace LemonadeStand
             int totalCustomers = overcastValue + temperatureValue + headlineValue + random.Next(0, 26);
             for(int i =0; i < totalCustomers; i++)
             {
-                customers.Add(customers[i]);
+                customers.Add(new Customers());
             }
         }
         private int SetOvercastValue(Random random)

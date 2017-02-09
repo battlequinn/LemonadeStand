@@ -35,11 +35,12 @@ namespace LemonadeStand
         }
         public void MakeLemonade()
         {
-            bool enoughSupplies = CheckSupplies();
-            if (enoughSupplies == true)
+            int choice = 1;
+            bool enoughSupplies;
+            do
             {
-                int choice;
-                do
+                enoughSupplies = CheckSupplies();
+                if (enoughSupplies == true)
                 {
                     Console.Clear();
                     inventory.recipe.DisplayRecipe();
@@ -51,15 +52,17 @@ namespace LemonadeStand
                         if (confirmation == 1)
                         {
                             MakePitcher();
+                            Console.WriteLine("You have made a pitcher of lemonade.");
+                            Console.ReadKey();
                         }
                     }
-                } while (choice != 2);
-            }
-            else
-            {
-                Console.WriteLine("You don't have enough supplies for that.");
-                Console.ReadKey();
-            }
+                }
+                else
+                {
+                    Console.WriteLine("You don't have enough supplies to continue.");
+                    Console.ReadKey();
+                }
+            } while (choice != 2 && enoughSupplies == true);
         }
         private int ChooseRecipeItem()
         {
@@ -128,6 +131,28 @@ namespace LemonadeStand
                     break;
             }
         }
+        public void SubmitRecipe()
+        {
+            Console.WriteLine("Are you sure you would like to submit your *final* recipe for the day?");
+            bool loop = false;
+            int answer;
+            do
+            {
+                Console.WriteLine($"1) Yes");
+                Console.WriteLine($"2) No");
+                bool result = Int32.TryParse(Console.ReadLine(), out answer);
+                if (result && (answer == 1 || answer == 2))
+                {
+                    loop = false;
+                }
+                else
+                {
+                    Console.WriteLine("\nERROR: Unable to read input. Please type the number corresponding to your selection of choice.\n");
+                    loop = true;
+                }
+            } while (loop == true);
+            inventory.recipe.Submit = true;
+        }
         private bool CheckSupplies()
         {
             bool enoughSupplies = false;
@@ -186,18 +211,36 @@ namespace LemonadeStand
             inventory.supplies[0].Quantity -= inventory.recipe.Lemons;
             inventory.supplies[1].Quantity -= inventory.recipe.Sugar;
             inventory.supplies[2].Quantity -= inventory.recipe.Ice;
-            inventory.supplies[4].Quantity--;
-            inventory.pitchersOfLemonade.Add(new PitcherOfLemonade(inventory.recipe.Lemons, inventory.recipe.Sugar, inventory.recipe.Ice, 1));
+            inventory.supplies[5].Quantity++;
         }
         public void SetStand(Day day, Random random)
         {
             double cupPrice = SetSellPrice();
             day.SetCustomers(random);
             int peopleAmount = day.customers.Count;
-            for(int i = 0; i < peopleAmount; i++)
+            int tempCupCount = inventory.supplies[3].Count;
+            for (int i = 0; i < peopleAmount; i++)
             {
-                day.customers[i].SetDemand(day.news.tasteOfTheDay, inventory.pitchersOfLemonade, cupPrice, random);
+                if (inventory.supplies[3].Quantity > 0 || inventory.supplies[5].Quantity > 0)
+                {
+                    int demand = day.customers[i].SetDemand(day.news.tasteOfTheDay, inventory.recipe, cupPrice, random);
+                    if (demand > 50)
+                    {
+                        SellCup(cupPrice);
+                    }
+                    if(inventory.supplies[3].Quantity + 10 == tempCupCount)
+                    {
+                        tempCupCount -= 10;
+                        inventory.supplies[5].Quantity--;
+                    }
+                }else
+                {
+                    Console.WriteLine("You have ran out of supplies today. Returning home...");
+                    Console.ReadKey();
+                    break;
+                }
             }
+
         }
         private double SetSellPrice()
         {
@@ -216,8 +259,12 @@ namespace LemonadeStand
                     Console.WriteLine("\nERROR: Unable to read input. Please enter a positive number.\n");
                 }
             } while (loop == true);
-
             return amount;
+        }
+        private void SellCup(double cupPrice)
+        {
+            inventory.supplies[3].Quantity--;
+            inventory.Money += cupPrice;
         }
     }
 }
